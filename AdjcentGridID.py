@@ -3,14 +3,16 @@
 
 
 import xlrd
-import neighbor
+import Travel.neighbor as neighbor
 import xlwt
+import time
 
+start = time.clock()
 
 workbook = xlwt.Workbook(encoding = 'utf-8')
 worksheet = workbook.add_sheet('My Worksheet')
 
-data_0 = xlrd.open_workbook('/Users/jasper/Desktop/yangzhou.xlsx')
+data_0 = xlrd.open_workbook('/Users/jasper/Desktop/')
 
 table = data_0.sheets()[0]
 data = []
@@ -20,6 +22,7 @@ row_num = table.nrows
 
 # Create raw data
 for i in range(1, row_num):
+
     city = int(table.row_values(i)[3])
     # print org
     org = int(table.row_values(i)[0])
@@ -44,28 +47,32 @@ for i in range(1, row_num):
 
     data.append(sub_result)
 
-print data
+print(data)
 
 
 final_result = []
 
 for i in range(0, len(data), 1):
+
     city_0 = data[i][0]
     org_0 = data[i][1]
     grid_0 = data[i][2]
     poly_0 = data[i][3]
 
-    first_poly = neighbor.get_geohash_list(poly_0, 7)
     j = i + 1
 
     for j in range(j, len(data), 1):
+        elapsed = (time.clock() - start)
+        print('Time used: ' + str(elapsed) + ' seconds')
+
         city_1 = data[j][0]
         org_1 = data[j][1]
         if city_0 != city_1 or org_0 != org_1:
-            continue
+            break
 
         grid_1 = data[j][2]
         poly_1 = data[j][3]
+        first_poly = neighbor.get_geohash_list(poly_0, 7)
         second_poly = neighbor.get_geohash_list(poly_1, 7)
         if len(first_poly.intersection(second_poly)) != 0:
             result = []
@@ -74,8 +81,7 @@ for i in range(0, len(data), 1):
             result.append(grid_0)
             result.append(grid_1)
             print (city_0, org_0, grid_0, grid_1)
-
-    final_result.append(result)
+            final_result.append(result)
 
 
 ##Writer

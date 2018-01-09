@@ -24,7 +24,7 @@ def encode(point):
     y = float(point[1])
     precision = 7
     precision = precision * 5 / 2 + 1
-    for i in range(precision):
+    for i in range(int(precision)):
         if x >= 0:
             lng_code.append(1)
             geo.append(1)
@@ -281,4 +281,4 @@ def get_geohash_list(poly):
     return result
 
 
-print get_8_neighbours([123.456789, 23.456789])
+print(get_8_neighbours([123.456789, 23.456789]))

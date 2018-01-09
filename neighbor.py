@@ -1,6 +1,6 @@
 # author = Jasper_Jiao@ele.me
-# -*- coding: cp936 -*-
-# coding: cp936
+# -*- coding: utf-8 -*-
+
 
 import Geohash
 
