@@ -7,12 +7,13 @@ import Travel.neighbor as neighbor
 import xlwt
 import time
 
+
 start = time.clock()
 
 workbook = xlwt.Workbook(encoding = 'utf-8')
 worksheet = workbook.add_sheet('My Worksheet')
 
-data_0 = xlrd.open_workbook('/Users/jasper/Desktop/')
+data_0 = xlrd.open_workbook('/Users/jasper/Desktop/grid_info.xlsx')
 
 table = data_0.sheets()[0]
 data = []

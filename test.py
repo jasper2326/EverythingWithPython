@@ -12,7 +12,7 @@ start = time.clock()
 workbook = xlwt.Workbook(encoding = 'utf-8')
 worksheet = workbook.add_sheet('My Worksheet')
 
-data_0 = xlrd.open_workbook('/Users/jasper/Desktop/page1.xlsx')
+data_0 = xlrd.open_workbook('/Users/jasper/Desktop/grid_info.xlsx')
 
 table = data_0.sheets()[0]
 data = []
@@ -22,8 +22,8 @@ row_num = table.nrows
 
 # Create raw data
 
-for i in range(1, 1000):
-    print('%4.2f' % (i*100.0/row_num) + '%')
+for i in range(1, row_num):
+    print('工作完成了 %4.2f' % (i*100.0/row_num) + '%')
     city = int(table.row_values(i)[3])
     org = int(table.row_values(i)[0])
     grid = int(table.row_values(i)[1])
@@ -63,7 +63,7 @@ for i in range(0, len(data), 1):
     for j in range(j, len(data), 1):
 
         elapsed = (time.clock() - start)
-        print('Time used: ' + str(elapsed) + ' seconds')
+        print('脚本节约了我 ' + str(elapsed) + ' seconds')
 
         city_1 = data[j][0]
         org_1 = data[j][1]
