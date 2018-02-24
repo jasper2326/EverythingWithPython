@@ -23,7 +23,7 @@ row_num = table.nrows
 # Create raw data
 
 for i in range(1, row_num):
-    print('工作完成了 %4.2f' % (i*100.0/row_num) + '%')
+    print('Job done %4.2f' % (i*100.0/row_num) + '%')
     city = int(table.row_values(i)[3])
     org = int(table.row_values(i)[0])
     grid = int(table.row_values(i)[1])
@@ -63,7 +63,7 @@ for i in range(0, len(data), 1):
     for j in range(j, len(data), 1):
 
         elapsed = (time.clock() - start)
-        print('脚本节约了我 ' + str(elapsed) + ' seconds')
+        print('Time saved ' + str(elapsed) + ' seconds')
 
         city_1 = data[j][0]
         org_1 = data[j][1]
