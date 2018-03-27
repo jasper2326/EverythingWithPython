@@ -67,5 +67,5 @@ def get_geohash_list(poly, precision):
             # Whether the grid is in polygon?
             if is_point_in_path((lat, lon), poly):
                 # If yes, append geohash in the result list
-                result.append(Geohash.encode(lat, lon, precision))
+                result.append(Geohash.encode([lat, lon, precision]))
     return set(result)
